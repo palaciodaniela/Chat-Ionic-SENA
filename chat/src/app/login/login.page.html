@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary"> <!-- Cambiar de color el fondo del titulo -->
+    <ion-title text-center>Inicio de sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!--  --> <img class="icon" src="https://firebasestorage.googleapis.com/v0/b/ionic-chat-89408.appspot.com/o/Ingresar.png?alt=media&token=4c006ecc-ad00-41eb-a7cf-72fcb3fd1469" alt="" >
+
+<p>Por favor ingrese su correo electronico y contraseña para continuar</p>
+
+<ion-item>
+  <ion-label position="floating">Correo electronico</ion-label> <!--Floatin para que el texto se haga hacia arriba al escribir-->
+  <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Contraseña</ion-label>
+  <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+</ion-item>
+<br>
+<ion-button (click)="onSubmitLogin()" expand="block">Iniciar sesión</ion-button><br><!--expand block toma el ancho de la pantalla-->
+<ion-button (click)="gmailLogin()" expand="block" color="light">Ingresar con Google</ion-button><br>
+<ion-button (click)="facebookLogin()" expand="block" color="light">Ingresar con Facebook</ion-button><br>
+<br>
+<ion-item-divider>
+  <ion-label>
+    ¿Aún no tienes una cuenta?
+  </ion-label>
+</ion-item-divider>
+<br>
+<ion-button (click)="toSignUp()" expand="block" color="light">Crear una cuenta</ion-button>
+
+</ion-content>

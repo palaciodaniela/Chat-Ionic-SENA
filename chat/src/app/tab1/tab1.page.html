@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Mis chats
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Salas de chat</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let chat of chatRooms" (click)="openChat(chat)"> <!-- Metodo para abrir la ventana del chat -->
+        <ion-avatar slot="start">
+          <ion-img *ngIf="chat.img == ''" src="https://picsum.photos/id/870/200/300?grayscale&blur=2"></ion-img> <!-- Si el campo de imagen de la bd esta vacio, se le da una URL de immagenes aletorias -->
+          <ion-img *ngIf="chat.img != ''" [src]="chat.img"></ion-img> <!-- Si no toma la imagen añadida en el campo desde la base de datos -->
+        </ion-avatar>
+        <ion-label>
+          <h2><b>{{ chat.name | titlecase }}</b></h2>
+          <p>{{ chat.description | titlecase }}</p> <!-- Son los parametros de la base de datos -->
+        </ion-label>  
+    </ion-item>
+
+
+  </ion-list>
+</ion-content>

@@ -1,0 +1,50 @@
+    <ion-header><!-- Encabezado de la ventana del chat -->
+    <ion-toolbar color="primary">
+        <ion-button style="font-size: 20px;" slot="start" fill="clear" color="success" (click)="closeChat()"> <!-- Boton para salir de la ventana -->
+            <ion-icon  style="color:white;" name="arrow-round-back"></ion-icon>
+        </ion-button>
+        <ion-title>
+            {{ chat.name | titlecase }}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content #scrollMe padding>
+    <div *ngIf="room && userInfo">
+        <!-- <div #allMsgs *ngFor="let message of room.messages">
+            <ion-card [ngClass]="{'others_msg': userInfo.uid != message.user.uid, 'self-msg': userInfo.uid == message.user.uid}">
+                <ion-card-content>
+                    {{ message.date.toDate() | date: 'short'}} - {{ message.content }} - {{ message.user.name}}
+                </ion-card-content>
+            </ion-card>
+        </div> -->  
+        <ion-grid #allMsgs> <!-- Diseño de los mensajes del chat -->
+            <ion-row *ngFor="let message of room.messages"><!-- se iteran los mensajes del room -->
+                <!-- Cuando el usuario que envia el mensaje es diferente al autenticado -->
+              <ion-col size="9" *ngIf="userInfo.uid != message.user.uid" class="message" [ngClass]="{'othermessage': userInfo.uid != message.user.uid, 'mymessage': userInfo.uid == message.user.uid}">
+                <span class="user_name">{{ message.user.name}}:</span>
+                <br>
+                <span>{{ message.content }}</span>
+                <div class="time">{{ message.date.toDate() | date: 'short'}}</div>
+              </ion-col>
+            
+              <!-- Cuando el usuario que envia el mensaje es el autenticado -->
+              <ion-col size="9" offset="3" *ngIf="userInfo.uid == message.user.uid" class="message" [ngClass]="{'othermessage': userInfo.uid != message.user.uid, 'mymessage': userInfo.uid == message.user.uid}">
+                <span class="user_name">{{ message.user.name}}:</span>
+                <br>
+                <span>{{ message.content }}</span>
+                <div class="time">{{ message.date.toDate() | date: 'short'}}</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+    </div>
+</ion-content>
+
+
+
+<ion-footer padding>
+    <ion-item>
+        <ion-textarea [(ngModel)]="msg"></ion-textarea>
+        <ion-button color="success" (click)="sendMessage()"><ion-icon name="send"></ion-icon></ion-button>
+    </ion-item>
+</ion-footer>

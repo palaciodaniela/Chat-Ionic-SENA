@@ -1,0 +1,44 @@
+ion-content{
+    --background: #ececec;
+}
+
+ion-card{
+    --background: white;
+}
+
+ion-card.others_msg{
+    --background: #B0CFC8; 
+}
+
+
+ion-card.self-msg{
+    --background: blue; 
+}
+
+.user_name {
+    color: #afafaf;
+  }
+  .message {
+    padding: 10px !important;
+    transition: all 250ms ease-in-out !important;
+    border-radius: 10px !important;
+    margin-bottom: 4px !important;
+  }
+  .mymessage { //mis mensajes
+    background: #50447a !important;
+    color: #000 !important;
+    border-top-right-radius: 0px !important;
+  }
+  .othermessage { // los mesajes del otro
+    background: #dcdcdc !important;
+    color: #000 !important;
+    border-top-left-radius: 0px !important;
+  }
+  .time {
+    color: #afafaf;
+    float: right;
+    font-size: small;
+  }
+  .message_row {
+    background-color: #fff;
+  }
